@@ -13,4 +13,4 @@ before_install:
 deploy:
   provider: gae
   keyfile: client-secret.json
-  project: western-net-275709
+  project: react-app-275712
