@@ -35,3 +35,7 @@ sketch
 
 # End of https://www.gitignore.io/api/react,appengine,visualstudiocode
 node_modules
+# Ignore credentials
+credentials.tar.gz
+client-secret.json
+lib/
