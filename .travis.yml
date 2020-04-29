@@ -4,9 +4,13 @@ node_js:
 cache:
   directories:
     - node_modules
+    - "$HOME/google-cloud-sdk/"
 
 before_install:
 - openssl aes-256-cbc -K $encrypted_d80a2d296111_key -iv $encrypted_d80a2d296111_iv -in credentials.tar.gz.enc -out credentials.tar.gz -d
+- if [ ! -d ${HOME}/google-cloud-sdk ]; then
+     curl https://sdk.cloud.google.com | bash;
+  fi
 - tar -xzf credentials.tar.gz
 - mkdir -p lib
 
