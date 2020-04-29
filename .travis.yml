@@ -15,5 +15,6 @@ install:
 
 deploy:
   provider: gae
+  edge: true
   keyfile: client-secret.json
   project: react-app-275712
