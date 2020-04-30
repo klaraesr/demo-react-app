@@ -1,20 +1,39 @@
 language: node_js
 node_js:
 - stable
+- lts/* # latest long-term support version
+
 cache:
   directories:
   - node_modules
   - "$HOME/google-cloud-sdk/"
 
+# decrypt the credentials for our service account
 before_install:
 - openssl aes-256-cbc -K $encrypted_2fd045226a67_key -iv $encrypted_2fd045226a67_iv
   -in client-secret.json.enc -out client-secret.json -d
 
+#done by default but added for clarity
 install:
+  - npm install
+
+# default module configuration file is app.yaml
+# config:
+# - app.yaml 
+
+# test is done by default
+script:
+  - npm test
   - npm run build
 
+# automatically deploy to google app engine after successful build
 deploy:
   provider: gae
-  edge: true
+  edge: true # use dpl v2 (next version, recommended to start using)
   keyfile: client-secret.json
-  project: react-app-275712
+  project: react-app-275712 # id of app engine project
+
+# By default, Travis will only deploy from your master branch.
+# You can also explicitly specify the branch to deploy from with the on option:
+#  on: production 
+# Builds triggered from Pull Requests will never trigger a deploy.

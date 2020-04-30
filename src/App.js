@@ -8,7 +8,7 @@ function App() {
       <header className="App-header">
         <img src={asta} className="App-logo" alt="logo" />
         <p>
-          Vår fina app
+          hej vad kul
         </p>
       </header>
     </div>
